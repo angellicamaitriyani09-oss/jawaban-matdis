@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IF1112 Study Zine — Kunci Jawaban & Catatan Matematika Diskrit</title>
+  <meta name="description" content="Catatan belajar interaktif & kunci jawaban lengkap Latihan UAS Matematika Diskrit (IF1112): Logika Predikat, Kombinasi, dan Fungsi Boolean." />
+
+  <!-- Editorial & Monospace Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- KaTeX for crisp responsive math rendering -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous" />
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <!-- Top Zine Ticker / Meta Bar -->
+  <div class="zine-topbar">
+    <div class="container topbar-inner">
+      <div class="topbar-meta">
+        <span class="mono-pill">IF1112</span>
+        <span>MATEMATIKA DISKRIT</span>
+        <span class="sep" aria-hidden="true">/</span>
+        <span>TEKNIK INFORMATIKA · SEM 1</span>
+      </div>
+      <div class="topbar-progress" id="progressBadge" aria-live="polite">
+        <span class="progress-dot"></span>
+        <span id="progressText">0 / 15 PAHAM</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Editorial Masthead -->
+  <header class="masthead">
+    <div class="container masthead-grid">
+      <div class="masthead-main">
+        <div class="stamp-row">
+          <span class="stamp stamp--ink">STUDY ZINE ED. 2026/2027</span>
+          <span class="stamp stamp--outline">15 SOAL ESSAY</span>
+          <span class="stamp stamp--highlight">UAS SUSULAN PREP</span>
+        </div>
+        <h1 class="masthead-title">
+          Kunci Jawaban &amp; Catatan<br />
+          <span class="marker marker--yellow">Matematika Diskrit</span>
+        </h1>
+        <p class="masthead-lead">
+          Dibahas santai tapi tetap presisi—mulai dari <strong>Logika Predikat</strong>,
+          <strong>Kombinasi Tim</strong>, sampai <strong>Fungsi Boolean &amp; Tabel Kebenaran</strong>.
+          Coba kerjakan dulu, baru buka jawaban akhirnya.
+        </p>
+      </div>
+
+      <aside class="masthead-aside" aria-label="Ringkasan Materi & Notasi">
+        <div class="aside-card">
+          <div class="aside-header">
+            <span class="mono-label">CHEAT SHEET NOTASI</span>
+            <span class="mono-label muted">DOSEN: SYAIFUL HUDA, M.PD</span>
+          </div>
+          <ul class="notation-list">
+            <li><span class="nt-sym">¬ ∧ ∨ →</span><span>Negasi, Dan, Atau, Implikasi</span></li>
+            <li><span class="nt-sym">∀  ∃</span><span>Untuk setiap, Terdapat (ada)</span></li>
+            <li><span class="nt-sym">A·B, A+B, A'</span><span>Boolean AND, OR, NOT</span></li>
+            <li><span class="nt-sym">C(n, r)</span><span>n! / (r! · (n − r)!)</span></li>
+          </ul>
+          <div class="aside-sections">
+            <button type="button" class="mini-sec mini-sec--cobalt" data-jump-section="A">
+              <strong>A1–A5</strong>
+              <span>Logika Predikat</span>
+            </button>
+            <button type="button" class="mini-sec mini-sec--matcha" data-jump-section="B">
+              <strong>B1–B5</strong>
+              <span>Kombinasi Tim</span>
+            </button>
+            <button type="button" class="mini-sec mini-sec--terracotta" data-jump-section="C">
+              <strong>C1–C5</strong>
+              <span>Fungsi Boolean</span>
+            </button>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </header>
+
+  <!-- Sticky Control & Navigation Deck -->
+  <nav class="control-deck" aria-label="Navigasi dan Filter Soal">
+    <div class="container control-inner">
+      <div class="control-row control-row--top">
+        <!-- Section Filters -->
+        <div class="filter-group" role="group" aria-label="Filter Bagian Materi">
+          <button type="button" class="chip is-active" data-filter-section="ALL">Semua (15)</button>
+          <button type="button" class="chip chip--cobalt" data-filter-section="A">A · Logika</button>
+          <button type="button" class="chip chip--matcha" data-filter-section="B">B · Kombinasi</button>
+          <button type="button" class="chip chip--terracotta" data-filter-section="C">C · Boolean</button>
+        </div>
+
+        <!-- Global Study Controls -->
+        <div class="global-actions">
+          <div class="mode-switch" role="group" aria-label="Mode Penjelasan Global">
+            <button type="button" class="mode-btn" id="globalBriefBtn" data-global-mode="brief">Ringkas</button>
+            <button type="button" class="mode-btn is-active" id="globalDetailBtn" data-global-mode="detail">Detail</button>
+          </div>
+          <button type="button" class="action-pill" id="toggleAllAnswersBtn" aria-pressed="false">
+            Buka Semua Jawaban
+          </button>
+        </div>
+      </div>
+
+      <div class="control-row control-row--bottom">
+        <!-- Difficulty Filter -->
+        <div class="diff-group" role="group" aria-label="Filter Level Kesulitan">
+          <span class="mono-label muted">LEVEL:</span>
+          <button type="button" class="diff-chip is-active" data-filter-diff="ALL">Semua</button>
+          <button type="button" class="diff-chip" data-filter-diff="Dasar">Dasar</button>
+          <button type="button" class="diff-chip" data-filter-diff="Sedang">Sedang</button>
+          <button type="button" class="diff-chip" data-filter-diff="HOTS">HOTS</button>
+        </div>
+
+        <!-- Quick Jump Number Strip -->
+        <div class="jump-strip" id="jumpStrip" aria-label="Loncat Cepat Nomor Soal"></div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Study Zine Feed -->
+  <main class="container zine-feed" id="problemFeed" aria-live="polite">
+    <!-- Rendered dynamically by app.js -->
+  </main>
+
+  <!-- Footer -->
+  <footer class="zine-footer">
+    <div class="container footer-inner">
+      <div>
+        <span class="mono-label">IF1112 · STUDY ZINE</span>
+        <p class="footer-note">
+          Tips ujian: kerjakan dari <strong>Dasar → Sedang → HOTS</strong>, tuliskan langkahnya, dan cek lagi apakah kuantor &amp; tanda kurung Boolean sudah sesuai.
+        </p>
+      </div>
+      <div class="footer-actions">
+        <button type="button" class="btn-outline" id="resetProgressBtn">Reset Progres Paham</button>
+        <a href="#top" class="btn-outline" id="backToTopBtn">↑ Ke Atas</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+  <script src="./data/problems.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
